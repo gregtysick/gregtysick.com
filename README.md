@@ -9,6 +9,7 @@ Personal public website repository for Greg Tysick.
 - Public site surface: `site/`
 - Current source snapshot: copied from the existing `greg.tysick.com` HTML site material in the Reputation workspace
 - Deployment target: Namecheap
+- GitHub repo: `https://github.com/gregtysick/gregtysick.com`
 
 ## Layout
 
