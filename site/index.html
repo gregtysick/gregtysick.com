@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Greg Tysick | Personal Professional Website">
+    <meta property="og:description" content="Personal professional website for Greg Tysick. Accounting, reporting, and analytical work.">
+    <meta property="og:url" content="https://greg.tysick.com/">
+    <meta property="og:image" content="https://greg.tysick.com/og-icon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <title>Greg Tysick | Accounting & Financial Operations & Analysis</title>
+    <meta name="description" content="Accounting and financial operations professional with 20+ years of experience in full-cycle accounting, reporting, and data accuracy. Focused on clean books, reliable reporting, and disciplined financial execution." />
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- ========================================== -->
+    <!-- GOOGLE ANALYTICS START -->
+    <!-- Paste your Global Site Tag (gtag.js) here. -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9H5LW64KK8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9H5LW64KK8');
+</script>
+    
+    <!-- ========================================== -->
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --bg-dark: #0B1A2E;
+            --bg-card: #FFFFFF;
+            --primary-blue: #3B82F6;
+            --accent-orange: #F97316;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --text-light: #94A3B8;
+            --border-light: #E2E8F0;
+            --shadow-soft: 0 20px 40px -10px rgba(11, 26, 46, 0.08);
+            --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: #F8FAFC;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--accent-orange);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: white;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-left: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 26, 46, 0.95); /* Slightly darker for mobile readability */
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        nav {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .logo span { color: var(--primary-blue); }
+
+         .nav-items a {
+            color: var(--text-light);
+            margin-left: 30px;
+            font-size: 0.95rem;
+        }
+        .nav-items a:hover { color: white; }
+
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            background-color: var(--bg-dark);
+            padding-top: 180px;
+            padding-bottom: 120px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, #60A5FA, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        /* --- VISUAL HUB (DESKTOP) --- */
+        .hero-visual {
+            flex: 1;
+            height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Center Node */
+        .hub-center {
+            width: 140px;
+            height: 140px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Outer Nodes */
+        .hub-node {
+            position: absolute;
+            width: 110px;
+            height: 60px;
+            background: rgba(11, 26, 46, 0.9);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Positions (Desktop) */
+        .node-1 { top: 10px; left: 30px; animation-delay: 0s; } /* Accuracy */
+        .node-2 { top: 40px; right: 10px; animation-delay: 1s; } /* Controls */
+        .node-3 { bottom: 30px; left: 10px; animation-delay: 2s; } /* Clarity */
+        .node-4 { bottom: 60px; right: 40px; animation-delay: 3s; } /* Reliability */
+
+        /* Connectors */
+        .connector {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            height: 1px;
+            width: 150px;
+            top: 50%;
+            left: 50%;
+            transform-origin: left center;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- TECH STRIP --- */
+        .tech-strip {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            padding: 40px 0;
+            overflow: hidden;
+        }
+        .tech-logos {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+        .tech-item { font-weight: 700; font-size: 1.2rem; color: #94A3B8; }
+
+        /* --- BENTO GRID SECTION --- */
+        .section-padding { padding: 100px 0; }
+        
+        .grid-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .grid-header h2 { font-size: 2.5rem; margin-bottom: 16px; color: var(--text-main); }
+        .grid-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .bento-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: #EFF6FF;
+            color: var(--primary-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .bento-card h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .bento-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- CARD STYLES --- */
+        .card-dark {
+            background: var(--bg-dark);
+            color: white;
+            border-color: #1E293B;
+        }
+        .card-dark h3 { color: white; }
+        .card-dark p { color: #94A3B8; }
+        .card-dark .card-icon { background: rgba(255,255,255,0.1); color: white; }
+
+        /* ========================================= */
+        /* --- MOBILE OPTIMIZATION --- */
+        /* ========================================= */
+        @media (max-width: 900px) {
+            
+            /* 1. Header & Hero Layout */
+            .hero-layout { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { margin: 0 auto 40px auto; }
+            .btn { width: 100%; margin: 5px 0; text-align: center; display: block; }
+            .btn-secondary { margin-left: 0; }
+            
+            /* 2. Fix the Box Graphic Intersection */
+            .hero-visual { 
+                /* Set a fixed container width for the visual on mobile so positioning is predictable */
+                width: 300px; 
+                margin: 40px auto 0 auto; 
+                height: 320px;
+                flex: none; /* Disable flex scaling */
+            }
+
+            .hub-center {
+                /* Shrink Center Box */
+                width: 100px;
+                height: 100px;
+                font-size: 1rem;
+            }
+
+            .hub-node {
+                /* Shrink Outer Boxes */
+                width: 90px;
+                height: 50px;
+                font-size: 0.75rem;
+            }
+
+            /* Push Outer Boxes to the Extreme Corners to clear the center */
+            .node-1 { top: 0; left: 0; }      /* Accuracy */
+            .node-2 { top: 0; right: 0; }     /* Controls */
+            .node-3 { bottom: 0; left: 0; }   /* Clarity */
+            .node-4 { bottom: 0; right: 0; }  /* Reliability */
+            
+            /* Hide connectors on mobile to reduce clutter */
+            .connector { display: none; }
+
+            /* 3. Tech Banner Scaling */
+            .tech-strip { padding: 30px 0; }
+            .tech-logos {
+                flex-wrap: wrap; 
+                gap: 15px 15px; /* Tighter gap */
+            }
+            .tech-item {
+                font-size: 0.9rem; /* Smaller font */
+                flex: 0 0 45%; /* Force 2 items per row approximately */
+                text-align: center;
+            }
+
+            /* 4. Bento Grid Stack */
+            .bento-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Greg Tysick</div>
+                <div class="nav-items">
+                    <a href="/methodology.html">Methodology</a>
+                    <a href="https://www.linkedin.com/in/gregtysick/" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">LinkedIn</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-layout">
+            
+            <!-- Left: Content -->
+            <div class="hero-text">
+                <span class="badge">Financial Operations & Analysis</span>
+                <h1>The logic behind <span>the ledger.</span></h1>
+                <p>I bring discipline and analytical rigor to financial reporting. My focus is on maintaining accurate books, ensuring compliance, and providing the clarity needed for sound decision-making.</p>
+                <div class="cta-group">
+                    <a href="https://www.linkedin.com/in/gregtysick/" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
+                    <a href="mailto:hello@tysick.com" class="btn btn-secondary">Contact</a>
+                </div>
+            </div>
+
+            <!-- Right: Visual "Hub" -->
+            <div class="hero-visual">
+                <!-- Center Hub -->
+                <div class="hub-center">
+                    Ledger
+                </div>
+                
+                <!-- Orbiting Nodes -->
+                <div class="hub-node node-1">Accuracy</div>
+                <div class="hub-node node-2">Controls</div>
+                <div class="hub-node node-3">Clarity</div>
+                <div class="hub-node node-4">Reliability</div>
+
+                <!-- Connectors -->
+                <div class="connector" style="transform: rotate(45deg) translate(-50px, 0);"></div>
+                <div class="connector" style="transform: rotate(135deg) translate(-50px, 0);"></div>
+                <div class="connector" style="transform: rotate(225deg) translate(-50px, 0);"></div>
+                <div class="connector" style="transform: rotate(315deg) translate(-50px, 0);"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tech Strip -->
+    <div class="tech-strip">
+        <div class="container">
+            <div class="tech-logos">
+                <span class="tech-item">Financial Reporting</span>
+                <span class="tech-item">General Ledger</span>
+                <span class="tech-item">Month-End Close</span>
+                <span class="tech-item">Variance Analysis</span>
+                <span class="tech-item">Internal Controls</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bento Grid Services -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="grid-header">
+                <h2>Operational Discipline</h2>
+                <p>Consistent results through structured processes.</p>
+            </div>
+
+            <div class="bento-grid">
+                
+                <!-- Card 1 -->
+                <div class="bento-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Financial Reporting & Control</h3>
+                    <p>Managing full-cycle accounting, from transaction classification to month-end close. I ensure all reconciliations, AP/AR oversight, and documentation meet strict internal standards.</p>
+                </div>
+
+                <!-- Card 2: Center Dark -->
+                <div class="bento-card card-dark">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Process Standardization</h3>
+                    <p>Reducing errors and rework by establishing clear workflows and checklists. I focus on making operational procedures repeatable, documented, and reliable.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Operational Analysis</h3>
+                    <p>Validating data integrity and analyzing trends to support leadership. I use spreadsheet-based analysis to identify variances and ensure financial clarity.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer style="background: white; padding: 60px 0; border-top: 1px solid var(--border-light);">
+        <div class="container" style="text-align: center;">
+            <p style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 20px;">"I believe that clean books are the foundation of a calm business."</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">© 2024 Greg Tysick</p>
+        </div>
+    </footer>
+
+</body>
+</html>

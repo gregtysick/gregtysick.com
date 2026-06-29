@@ -1,0 +1,16 @@
+# Deployment Notes
+
+## Public Surface
+
+- Public deployable files live in `site/`.
+
+## Current Hosting Plan
+
+- Current site source is being staged from the Reputation workspace.
+- Target hosting provider: Namecheap.
+
+## Migration Notes
+
+- Keep the WHC backup intact until the transfer is verified.
+- Back up the WordPress site before moving DNS or changing hosting.
+- Do not publish repository docs to the public web root.

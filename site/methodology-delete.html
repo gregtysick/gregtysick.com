@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytical Approach | Greg Tysick</title>
+
+    <!-- ========================================== -->
+    <!-- GOOGLE ANALYTICS START -->
+    <!-- Paste your Global Site Tag (gtag.js) here. -->
+    <!-- ========================================== -->
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL VARIABLES (MATCHING HOME PAGE) --- */
+        :root {
+            --bg-dark: #0B1A2E;
+            --bg-page: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --primary-blue: #3B82F6;
+            --accent-orange: #F97316;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --text-light: #94A3B8;
+            --border-light: #E2E8F0;
+            --shadow-soft: 0 20px 40px -10px rgba(11, 26, 46, 0.08);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-page);
+            line-height: 1.7; /* Slightly increased for reading pages */
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        p { margin-bottom: 1.5rem; color: var(--text-muted); }
+        ul { margin-bottom: 1.5rem; padding-left: 1.2rem; color: var(--text-muted); }
+        li { margin-bottom: 0.5rem; }
+
+        a { text-decoration: none; transition: 0.3s; color: inherit; }
+
+        .container {
+            max-width: 1000px; /* Slightly narrower than home for readability */
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 26, 46, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        nav {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .btn-nav {
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .btn-nav:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); }
+
+        /* --- HERO SECTION --- */
+        .page-hero {
+            padding: 160px 0 80px 0;
+            background-color: var(--bg-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .page-hero h1 { font-size: 2.5rem; max-width: 800px; color: white; margin-bottom: 0; }
+        .hero-badge {
+            color: var(--accent-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .section-padding { padding: 80px 0; }
+        .section-dark { background-color: var(--bg-dark); color: white; }
+        .section-dark h2 { color: white; }
+        .section-dark p, .section-dark li { color: #94A3B8; }
+
+        .content-block { max-width: 800px; }
+        
+        /* Grid for cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        /* Standard Card */
+        .info-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-card);
+        }
+        .info-card h3 { font-size: 1.25rem; color: var(--primary-blue); margin-bottom: 0.75rem; }
+        .info-card p { font-size: 0.95rem; margin-bottom: 0; }
+
+        /* Dark Card (For Systems Section) */
+        .dark-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 32px;
+            border-radius: 12px;
+        }
+        .dark-card h3 { color: var(--accent-orange); font-size: 1.15rem; }
+        .dark-card p { color: #CBD5E1; font-size: 0.95rem; margin-bottom: 0; }
+
+        /* Application Section (Full width cards) */
+        .app-card {
+            background: white;
+            border-left: 4px solid var(--primary-blue);
+            padding: 32px;
+            margin-bottom: 32px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* Tech Stack Styling */
+        .tech-category { margin-bottom: 40px; }
+        .tech-category h4 { 
+            font-size: 1rem; 
+            text-transform: uppercase; 
+            color: var(--text-light); 
+            letter-spacing: 0.05em; 
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .tech-pill {
+            background: #EFF6FF;
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Education List */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-light);
+            padding: 16px 0;
+        }
+        .edu-item:last-child { border-bottom: none; }
+        .edu-degree { font-weight: 700; color: var(--text-main); }
+        .edu-school { color: var(--text-muted); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: white;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .page-hero { padding-top: 120px; }
+            .page-hero h1 { font-size: 2rem; }
+            .edu-item { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <!-- Links back to Home Page -->
+                <a href="index.html" class="logo">Greg Tysick</a>
+                <div>
+                    <a href="https://www.linkedin.com/in/gregtysick/" target="_blank" class="btn-nav">LinkedIn</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="hero-badge">Methodology & Experience</span>
+            <h1>Analytical Approach to Accounting & Financial Analysis</h1>
+        </div>
+    </section>
+
+    <!-- 1.0 Summary -->
+    <section class="section-padding">
+        <div class="container content-block">
+            <h2>Professional Summary</h2>
+            <p>I bring over two decades of experience in full-cycle accounting and financial reporting, with a strong focus on financial accuracy, operational reliability, and data-driven decision-making. My work combines practical accounting discipline with a modern, analytical approach designed to produce clear, dependable financial insights that businesses can actually use.</p>
+            <p>I describe myself as an accounting and financial operations professional with an analytical, engineering mindset. This perspective shapes how I approach financial data: breaking down complexity, eliminating ambiguity, and transforming raw information into structured, decision-ready intelligence that supports sound business outcomes.</p>
+        </div>
+    </section>
+
+    <!-- 2.0 Foundation -->
+    <section class="section-padding" style="background-color: #F1F5F9;">
+        <div class="container">
+            <div class="content-block">
+                <h2>A Foundation of Financial Discipline</h2>
+                <p>My career is grounded in more than twenty years of hands-on, full-cycle accounting across a range of business environments. Across these environments, my focus has remained consistent: maintaining clean, accurate books; delivering timely and reliable reporting; and supporting strong operational controls.</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="info-card">
+                    <h3>Full-Cycle Accounting</h3>
+                    <p>Managing A/R, A/P, payroll, bank and credit card reconciliations, and inventory.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Financial Reporting</h3>
+                    <p>Leading month-end and year-end close processes and preparing clean reporting packages for accountant review and management decision-making.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Operational Support</h3>
+                    <p>Ensuring adherence to tax and regulatory requirements across Ontario, Quebec, and BC, and providing audit-ready documentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3.0 Systems Mindset (Dark Section) -->
+    <section class="section-padding section-dark">
+        <div class="container">
+            <div class="content-block">
+                <h2>A Systems-Based Analytical Mindset</h2>
+                <p>Beyond traditional accounting responsibilities, my primary differentiator is how I approach problem-solving. I apply a structured, systems-oriented mindset inspired by engineering principles to reduce ambiguity, remove emotion from decision-making, and build processes that behave predictably under real-world conditions.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="dark-card">
+                    <h3>Deconstructing Ambiguity</h3>
+                    <p>I break unclear or complex problems into structured inputs, defining clear rules and constraints before attempting solutions.</p>
+                </div>
+                <div class="dark-card">
+                    <h3>Prioritizing Data Integrity</h3>
+                    <p>I operate on the belief that action should follow verification. Data must be validated before it is used for reporting.</p>
+                </div>
+                <div class="dark-card">
+                    <h3>Building Repeatable Systems</h3>
+                    <p>I focus on designing processes that are consistent, testable, and reliable—not one-off fixes.</p>
+                </div>
+                <div class="dark-card">
+                    <h3>Disciplined Execution</h3>
+                    <p>I aim to reduce noise and bias through methodical iteration, testing, and refinement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.0 Applications -->
+    <section class="section-padding">
+        <div class="container content-block">
+            <h2 style="margin-bottom: 40px;">Applying This Approach in Practice</h2>
+            
+            <!-- 4.1 -->
+            <div class="app-card">
+                <h3>Financial Operations & Accounting</h3>
+                <p>I have led and supported accounting functions through periods of growth and operational change, designing scalable processes that improve control and reliability.</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Process Standardization:</strong> Standardized accounting workflows, reducing month-end close time by approx. 50% and improving audit readiness.</li>
+                    <li><strong>System Integration:</strong> Integrated Shopify, QBO, and CRM systems, reducing manual data entry errors by roughly 40%.</li>
+                    <li><strong>Scaling with Control:</strong> Provided financial oversight during expansion from 3 to 40 staff across three provinces.</li>
+                </ul>
+            </div>
+
+            <!-- 4.2 -->
+            <div class="app-card" style="border-left-color: var(--accent-orange);">
+                <h3>Data Analysis & Automation</h3>
+                <p>I take a pragmatic approach to data analysis, building small internal tools and workflows that solve specific problems. My goal is clarity—reducing manual effort, minimizing errors, and improving the usability of financial information.</p>
+            </div>
+
+            <!-- 4.3 -->
+            <div class="app-card" style="border-left-color: var(--text-main);">
+                <h3>Programmatic Financial Analysis</h3>
+                <p>I explore rule-based analytical systems as a way to apply structured thinking to complex financial domains. This work involves translating analysis into deterministic logic, enforcing predefined constraints, and evaluating outcomes through consistent execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5.0 Technical Fluency -->
+    <section class="section-padding" style="background-color: #F1F5F9;">
+        <div class="container">
+            <h2>Technical Fluency</h2>
+            <p style="max-width: 700px;">I view technology as a tool for reducing friction and improving clarity. I am comfortable working across modern accounting, data, and automation tools.</p>
+
+            <div style="margin-top: 40px;">
+                
+                <div class="tech-category">
+                    <h4>Accounting & Data</h4>
+                    <div class="pill-container">
+                        <span class="tech-pill">QuickBooks (Online & Desktop)</span>
+                        <span class="tech-pill">Xero</span>
+                        <span class="tech-pill">Sage</span>
+                        <span class="tech-pill">Excel (Advanced)</span>
+                        <span class="tech-pill">Power BI</span>
+                        <span class="tech-pill">SQL / MySQL</span>
+                        <span class="tech-pill">Google Sheets</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h4>Operations & Payroll</h4>
+                    <div class="pill-container">
+                        <span class="tech-pill">ADP</span>
+                        <span class="tech-pill">Ceridian Dayforce</span>
+                        <span class="tech-pill">Payworks</span>
+                        <span class="tech-pill">Hubdoc</span>
+                        <span class="tech-pill">Plooto</span>
+                        <span class="tech-pill">Stripe</span>
+                        <span class="tech-pill">Office 365 Admin</span>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h4>Programming & Automation</h4>
+                    <div class="pill-container">
+                        <span class="tech-pill">Python (Pandas, NumPy)</span>
+                        <span class="tech-pill">Jupyter Notebooks</span>
+                        <span class="tech-pill">Power Automate</span>
+                        <span class="tech-pill">Zapier</span>
+                        <span class="tech-pill">GitHub</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.0 Education -->
+    <section class="section-padding">
+        <div class="container content-block">
+            <h2>Foundations in Business & Analysis</h2>
+            
+            <div class="edu-item">
+                <span class="edu-degree">Business Accounting</span>
+                <span class="edu-school">Algonquin College (1994)</span>
+            </div>
+            <div class="edu-item">
+                <span class="edu-degree">Commerce</span>
+                <span class="edu-school">Carleton University (1992)</span>
+            </div>
+            <div class="edu-item">
+                <span class="edu-degree">Advanced Derivatives Trading</span>
+                <span class="edu-school">TRI (2017–2019)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p style="font-family: 'Manrope', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 20px;">"Clean books are the foundation of a calm business."</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">© 2024 Greg Tysick</p>
+        </div>
+    </footer>
+
+</body>
+</html>
