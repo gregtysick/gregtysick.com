@@ -7,7 +7,7 @@ Personal public website repository for Greg Tysick.
 - Local checkout: `Greg Tysick/Repos/gregtysick-website/main`
 - Default branch: `main`
 - Public site surface: `site/`
-- Current source snapshot: copied from the existing `greg.tysick.com` HTML site material in the Reputation workspace
+- Current source snapshot: restored from `Greg Tysick/Projects/gregtysick.com/gregtysick.com.zip`
 - Deployment target: Namecheap cPanel document root `/home/beaufgfv/gregtysick.com`
 - GitHub repo: `https://github.com/gregtysick/gregtysick-website`
 
