@@ -9,6 +9,11 @@
 - Current site source is being staged from the Reputation workspace.
 - Target hosting provider: Namecheap.
 - Public GitHub repo: `https://github.com/gregtysick/gregtysick-website`
+- Namecheap document root: `/home/beaufgfv/gregtysick.com`
+
+## Deploy Flow
+
+Use cPanel Git Version Control to deploy `main`. The `.cpanel.yml` file copies everything in `site/` to the production document root.
 
 ## Migration Notes
 
