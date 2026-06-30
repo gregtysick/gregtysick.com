@@ -1,15 +1,15 @@
-# gregtysick.com
+# gregtysick-website
 
 Personal public website repository for Greg Tysick.
 
 ## Current State
 
-- Local checkout: `Reputation/Repos/gregtysick.com/main`
+- Local checkout: `Greg Tysick/Repos/gregtysick-website/main`
 - Default branch: `main`
 - Public site surface: `site/`
 - Current source snapshot: copied from the existing `greg.tysick.com` HTML site material in the Reputation workspace
 - Deployment target: Namecheap
-- GitHub repo: `https://github.com/gregtysick/gregtysick.com`
+- GitHub repo: `https://github.com/gregtysick/gregtysick-website`
 
 ## Layout
 

@@ -8,7 +8,7 @@
 
 - Current site source is being staged from the Reputation workspace.
 - Target hosting provider: Namecheap.
-- Public GitHub repo: `https://github.com/gregtysick/gregtysick.com`
+- Public GitHub repo: `https://github.com/gregtysick/gregtysick-website`
 
 ## Migration Notes
 
